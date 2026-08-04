@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>500 - Terjadi Kesalahan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family:'Poppins',sans-serif; background: #2E4720; min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; }
+        h1 { font-family:'Playfair Display',serif; font-size:6rem; color:#F8F2E7; font-weight:700; }
+        p { color: rgba(248,242,231,0.8); }
+        .btn-coral { background:#E06A4B; color:#fff; border:none; border-radius:30px; padding:.6rem 2rem; text-decoration:none; display:inline-block; font-weight:600; }
+    </style>
+</head>
+<body>
+    <div>
+        <i class="bi bi-exclamation-triangle-fill" style="font-size:3rem; color:#E06A4B;"></i>
+        <h1>500</h1>
+        <p class="fs-5 mb-4">Dapur kami sedang ada kendala. Coba beberapa saat lagi ya.</p>
+        <a href="/" class="btn-coral">Kembali ke Beranda</a>
+    </div>
+</body>
+</html>

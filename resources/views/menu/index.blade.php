@@ -2,10 +2,13 @@
 @section('title', 'Menu')
 @section('content')
 
-<section style="background: var(--dark-olive); padding: 140px 0 60px;">
-    <div class="container text-center text-white">
-        <h1 class="fw-bold" style="color: var(--cream);">Menu Kami</h1>
-        <p style="color: rgba(248,242,231,0.8);">Nikmati beragam pilihan kopi dan hidangan hangat</p>
+<section class="position-relative d-flex align-items-center" style="min-height: 55vh; overflow:hidden;">
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background-image:url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1600&q=80'); background-size:cover; background-position:center;"></div>
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(180deg, rgba(46,71,32,0.55), rgba(62,95,43,0.85));"></div>
+    <div class="container text-center text-white position-relative fade-up show" style="z-index:2; padding-top:60px;">
+        <p class="italic-accent fs-4" style="color: var(--coral);">Cita Rasa Pilihan</p>
+        <h1 class="display-4 fw-bold" style="color: var(--cream);">Menu Kami</h1>
+        <p class="fs-5" style="color: rgba(248,242,231,0.85);">Nikmati beragam pilihan kopi dan hidangan hangat</p>
     </div>
 </section>
 
@@ -34,7 +37,7 @@
                 <div class="col-md-4 fade-up">
                     <div class="card card-menu h-100">
                         @if ($menu->image)
-                            <img src="{{ asset('storage/'.$menu->image) }}" class="card-img-top">
+                            <img src="{{ $menu->image_url }}" class="card-img-top">
                         @else
                             <div class="d-flex align-items-center justify-content-center" style="height:200px; background: var(--beige);"><i class="bi bi-cup-hot fs-1" style="color: var(--olive);"></i></div>
                         @endif

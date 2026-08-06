@@ -12,6 +12,6 @@ class RestaurantProfile extends Model
     protected $fillable = [
         'name', 'history', 'vision', 'mission', 'core_values', 'logo', 'cover_photo',
         'address', 'phone', 'whatsapp', 'email', 'maps_embed_url',
-        'instagram', 'facebook', 'opening_hours',
+        'instagram', 'facebook', 'tiktok', 'opening_hours',
     ];
 }

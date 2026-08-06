@@ -42,4 +42,13 @@ class Menu extends Model
             ->limit(4)
             ->get();
     }
+
+    public function getImageUrlAttribute(): ?string
+    {
+        if (! $this->image) {
+            return null;
+        }
+
+        return str_starts_with($this->image, 'http') ? $this->image : asset('storage/'.$this->image);
+    }
 }

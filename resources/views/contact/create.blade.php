@@ -2,10 +2,13 @@
 @section('title', 'Kontak')
 @section('content')
 
-<section style="background: var(--dark-olive); padding: 140px 0 60px;">
-    <div class="container text-center text-white">
-        <h1 class="fw-bold" style="color: var(--cream);">Hubungi Kami</h1>
-        <p style="color: rgba(248,242,231,0.8);">Ada pertanyaan atau masukan? Kami siap mendengarkan</p>
+<section class="position-relative d-flex align-items-center" style="min-height: 55vh; overflow:hidden;">
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background-image:url(\'https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1600&q=80\'); background-size:cover; background-position:center;"></div>
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(180deg, rgba(46,71,32,0.55), rgba(62,95,43,0.85));"></div>
+    <div class="container text-center text-white position-relative fade-up show" style="z-index:2; padding-top:60px;">
+        <p class="italic-accent fs-4" style="color: var(--coral);">Kami Siap Mendengarkan</p>
+        <h1 class="display-4 fw-bold" style="color: var(--cream);">Hubungi Kami</h1>
+        <p class="fs-5" style="color: rgba(248,242,231,0.85);">Ada pertanyaan atau masukan? Jangan ragu untuk menyapa kami</p>
     </div>
 </section>
 

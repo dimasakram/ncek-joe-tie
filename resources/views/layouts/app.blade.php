@@ -14,9 +14,10 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
+    {{-- Schema.org Restaurant --}}
     <script type="application/ld+json">
     {!! json_encode([
         '@context' => 'https://schema.org',
@@ -37,15 +38,16 @@
             --beige: #EADFCF;
         }
         * { scroll-behavior: smooth; }
-        body { font-family: 'Poppins', sans-serif; background: var(--cream); color: #3a3a3a; }
-        h1, h2, h3, h4, .font-display { font-family: 'Playfair Display', serif; }
+        body { font-family: 'Manrope', sans-serif; background: var(--cream); color: #4a453f; letter-spacing: .1px; }
+        h1, h2, h3, h4, .font-display { font-family: 'Fraunces', serif; letter-spacing: -.5px; }
+        .italic-accent { font-family: 'Fraunces', serif; font-style: italic; font-weight: 500; }
 
         /* Navbar */
         .navbar-custom {
             background: transparent; transition: 0.35s; padding: 1.2rem 0; position: fixed; width: 100%; top: 0; z-index: 1050;
         }
         .navbar-custom.scrolled { background: var(--dark-olive); padding: 0.7rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
-        .navbar-custom .navbar-brand { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.5rem; color: var(--cream) !important; }
+        .navbar-custom .navbar-brand { font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.5rem; color: var(--cream) !important; }
         .navbar-custom .nav-link { color: rgba(248,242,231,0.85) !important; font-weight: 500; margin: 0 .5rem; }
         .navbar-custom .nav-link:hover, .navbar-custom .nav-link.active { color: var(--coral) !important; }
         .btn-coral { background: var(--coral); color: #fff; border: none; border-radius: 30px; padding: .55rem 1.6rem; font-weight: 600; transition: .3s; }
@@ -112,41 +114,39 @@
 
 @yield('content')
 
-<footer class="pt-5 pb-3 mt-5">
+<footer class="pt-5 pb-4 mt-5">
     <div class="container">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <h5 class="font-display" style="color: var(--cream);"><i class="bi bi-cup-hot-fill" style="color: var(--coral);"></i> {{ $profile->name ?? 'Ncek Joe Tie' }}</h5>
-                <p class="small">{{ $settings['site_tagline'] ?? 'Cafe & Resto Hangat Penuh Cita Rasa' }}</p>
+        <div class="row g-5">
+            <div class="col-lg-5">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <div style="width:56px;height:56px;border-radius:16px;background:var(--olive);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <i class="bi bi-cup-hot-fill fs-3" style="color: var(--coral);"></i>
+                    </div>
+                    <h5 class="font-display mb-0" style="color: var(--cream); font-size:1.6rem;">{{ $profile->name ?? 'Ncek Joe Tie' }}</h5>
+                </div>
+                <p class="small mb-3" style="max-width: 380px; line-height:1.8;">{{ $settings['site_tagline'] ?? 'Cafe & Resto Hangat Penuh Cita Rasa' }}</p>
                 <div class="d-flex gap-2">
                     @if (!empty($profile->instagram))<a href="{{ $profile->instagram }}" target="_blank" class="fs-5"><i class="bi bi-instagram"></i></a>@endif
-                    @if (!empty($profile->facebook))<a href="{{ $profile->facebook }}" target="_blank" class="fs-5"><i class="bi bi-facebook"></i></a>@endif
+                    @if (!empty($profile->tiktok))<a href="{{ $profile->tiktok }}" target="_blank" class="fs-5"><i class="bi bi-tiktok"></i></a>@endif
                     @if (!empty($profile->whatsapp))<a href="https://wa.me/{{ $profile->whatsapp }}" target="_blank" class="fs-5"><i class="bi bi-whatsapp"></i></a>@endif
                 </div>
             </div>
-            <div class="col-md-2">
-                <h6 class="text-uppercase small fw-bold mb-3" style="color: var(--coral);">Menu</h6>
-                <ul class="list-unstyled small">
-                    <li class="mb-2"><a href="{{ route('menu.index') }}">Semua Menu</a></li>
-                    <li class="mb-2"><a href="{{ route('promo.index') }}">Promo</a></li>
-                    <li class="mb-2"><a href="{{ route('gallery.index') }}">Galeri</a></li>
-                    <li class="mb-2"><a href="{{ route('article.index') }}">Artikel</a></li>
+            <div class="col-lg-3 col-6">
+                <h6 class="text-uppercase small fw-bold mb-3" style="color: var(--coral); letter-spacing:1px;">Customer Care</h6>
+                <ul class="list-unstyled small" style="line-height:2.2;">
+                    <li><a href="{{ route('reservation.create') }}">Reservasi</a></li>
+                    <li><a href="{{ route('contact.create') }}">Hubungi Kami</a></li>
+                    <li><a href="{{ route('article.index') }}">Artikel</a></li>
+                    <li><a href="{{ route('home') }}#faq">FAQ</a></li>
                 </ul>
             </div>
-            <div class="col-md-3">
-                <h6 class="text-uppercase small fw-bold mb-3" style="color: var(--coral);">Kontak</h6>
-                <ul class="list-unstyled small">
-                    <li class="mb-2"><i class="bi bi-geo-alt me-1"></i> {{ $profile->address ?? '-' }}</li>
-                    <li class="mb-2"><i class="bi bi-telephone me-1"></i> {{ $profile->phone ?? '-' }}</li>
-                    <li class="mb-2"><i class="bi bi-envelope me-1"></i> {{ $profile->email ?? '-' }}</li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h6 class="text-uppercase small fw-bold mb-3" style="color: var(--coral);">Jam Buka</h6>
-                <p class="small">{{ $profile->opening_hours ?? 'Setiap hari, 09.00 - 22.00 WIB' }}</p>
+            <div class="col-lg-4 col-6">
+                <h6 class="text-uppercase small fw-bold mb-3" style="color: var(--coral); letter-spacing:1px;">Jam Operasional</h6>
+                <p class="small" style="line-height:1.8;">{{ $profile->opening_hours ?? 'Setiap hari, 09.00 - 22.00 WIB' }}</p>
+                <p class="small mb-0"><i class="bi bi-envelope me-2"></i>{{ $profile->email ?? '-' }}</p>
             </div>
         </div>
-        <hr style="border-color: rgba(248,242,231,0.15);">
+        <hr style="border-color: rgba(248,242,231,0.15);" class="mt-5">
         <p class="text-center small mb-0">&copy; {{ date('Y') }} {{ $profile->name ?? 'Ncek Joe Tie' }}. Seluruh hak cipta dilindungi.</p>
     </div>
 </footer>

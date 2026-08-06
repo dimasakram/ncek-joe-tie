@@ -68,13 +68,17 @@
             <input type="text" name="maps_embed_url" class="form-control" value="{{ old('maps_embed_url', $profile->maps_embed_url) }}">
         </div>
         <div class="row">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
                 <label class="form-label">Instagram</label>
                 <input type="text" name="instagram" class="form-control" value="{{ old('instagram', $profile->instagram) }}">
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
                 <label class="form-label">Facebook</label>
                 <input type="text" name="facebook" class="form-control" value="{{ old('facebook', $profile->facebook) }}">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label class="form-label">TikTok</label>
+                <input type="text" name="tiktok" class="form-control" value="{{ old('tiktok', $profile->tiktok) }}">
             </div>
         </div>
         <button class="btn btn-coral">Simpan Perubahan</button>

@@ -19,6 +19,7 @@ Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
 Route::get('/menu/{slug}', [MenuController::class, 'show'])->name('menu.show');
 
 Route::get('/promo', [PromoController::class, 'index'])->name('promo.index');
+Route::get('/promo/{slug}', [PromoController::class, 'show'])->name('promo.show');
 
 Route::get('/galeri', [GalleryController::class, 'index'])->name('gallery.index');
 

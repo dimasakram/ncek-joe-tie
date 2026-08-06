@@ -25,6 +25,7 @@ class UpdateRestaurantProfileRequest extends FormRequest
             'maps_embed_url' => ['nullable', 'string'],
             'instagram' => ['nullable', 'string', 'max:255'],
             'facebook' => ['nullable', 'string', 'max:255'],
+            'tiktok' => ['nullable', 'string', 'max:255'],
             'opening_hours' => ['nullable', 'string', 'max:150'],
         ];
     }

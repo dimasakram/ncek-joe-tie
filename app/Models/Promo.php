@@ -34,4 +34,13 @@ class Promo extends Model
             ->whereDate('start_date', '<=', now())
             ->whereDate('end_date', '>=', now());
     }
+
+    public function getImageUrlAttribute(): ?string
+    {
+        if (! $this->image) {
+            return null;
+        }
+
+        return str_starts_with($this->image, 'http') ? $this->image : asset('storage/'.$this->image);
+    }
 }

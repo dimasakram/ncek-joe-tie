@@ -17,4 +17,13 @@ class Testimonial extends Model
             'is_featured' => 'boolean',
         ];
     }
+
+    public function getPhotoUrlAttribute(): ?string
+    {
+        if (! $this->photo) {
+            return null;
+        }
+
+        return str_starts_with($this->photo, 'http') ? $this->photo : asset('storage/'.$this->photo);
+    }
 }

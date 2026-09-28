@@ -6,7 +6,7 @@
     <title>@yield('title', 'Dashboard') - Admin Ncek Joe Tie</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --olive: #3E5F2B;
@@ -15,18 +15,20 @@
             --dark-olive: #2E4720;
             --beige: #EADFCF;
         }
-        body { font-family: 'Poppins', sans-serif; background: var(--cream); }
+        body { font-family: 'Manrope', sans-serif; background: var(--cream); }
         .sidebar {
-            width: 260px; min-height: 100vh; background: var(--dark-olive); color: var(--cream);
-            position: fixed; top: 0; left: 0; padding-top: 1.5rem; transition: 0.3s; z-index: 1000;
+            width: 260px; height: 100vh; overflow-y: auto; background: var(--dark-olive); color: var(--cream);
+            position: fixed; top: 0; left: 0; padding-top: 1.5rem; padding-bottom: 1.5rem; transition: 0.3s; z-index: 1000;
         }
-        .sidebar .brand { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.4rem; padding: 0 1.5rem 1.5rem; display:flex; align-items:center; gap:.6rem; color: var(--cream); }
+        .sidebar .brand { font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.4rem; padding: 0 1.5rem 1.5rem; display:flex; align-items:center; gap:.6rem; color: var(--cream); }
         .sidebar .brand i { color: var(--coral); font-size: 1.6rem; }
         .sidebar a {
             display: flex; align-items: center; gap: .7rem; color: rgba(248,242,231,0.8);
             padding: .65rem 1.5rem; text-decoration: none; font-size: .93rem; transition: .2s;
         }
         .sidebar a:hover, .sidebar a.active { background: var(--olive); color: #fff; }
+        .sidebar form button { display: flex; align-items: center; gap: .7rem; }
+        .sidebar form button:hover { background: var(--olive) !important; color: #fff !important; }
         .sidebar hr { border-color: rgba(248,242,231,0.15); margin: .5rem 1.2rem; }
         .main-content { margin-left: 260px; padding: 1.8rem; }
         .topbar {
@@ -43,6 +45,8 @@
         .btn-olive:hover { background: var(--dark-olive); color: #fff; }
         .btn-coral { background: var(--coral); color: #fff; }
         .btn-coral:hover { background: #c85736; color: #fff; }
+        .btn-outline-olive-sm { border: 1.5px solid var(--olive); color: var(--olive); background: transparent; border-radius: 8px; padding: .4rem .9rem; font-size: .875rem; font-weight: 600; transition: .2s; }
+        .btn-outline-olive-sm:hover { background: var(--olive); color: #fff; }
         .table thead { background: var(--beige); }
         .badge-best { background: var(--coral); }
         .badge-new { background: var(--olive); }
@@ -63,6 +67,7 @@
     <hr>
     <a href="{{ route('admin.menu.index') }}" class="{{ request()->routeIs('admin.menu.*') ? 'active' : '' }}"><i class="bi bi-egg-fried"></i> Kelola Menu</a>
     <a href="{{ route('admin.kategori.index') }}" class="{{ request()->routeIs('admin.kategori.*') ? 'active' : '' }}"><i class="bi bi-tags"></i> Kelola Kategori</a>
+    <a href="{{ route('admin.tentang.edit') }}" class="{{ request()->routeIs('admin.tentang.*') ? 'active' : '' }}"><i class="bi bi-info-circle"></i> Kelola Tentang</a>
     <a href="{{ route('admin.promo.index') }}" class="{{ request()->routeIs('admin.promo.*') ? 'active' : '' }}"><i class="bi bi-percent"></i> Kelola Promo</a>
     <a href="{{ route('admin.galeri.index') }}" class="{{ request()->routeIs('admin.galeri.*') ? 'active' : '' }}"><i class="bi bi-images"></i> Kelola Galeri</a>
     <a href="{{ route('admin.artikel.index') }}" class="{{ request()->routeIs('admin.artikel.*') ? 'active' : '' }}"><i class="bi bi-newspaper"></i> Kelola Artikel</a>
@@ -73,7 +78,9 @@
     <hr>
     <a href="{{ route('admin.profil.edit') }}" class="{{ request()->routeIs('admin.profil.*') ? 'active' : '' }}"><i class="bi bi-shop"></i> Profil Restoran</a>
     <a href="{{ route('admin.settings.edit') }}" class="{{ request()->routeIs('admin.settings.*') ? 'active' : '' }}"><i class="bi bi-gear"></i> Pengaturan Website</a>
-    <a href="{{ route('admin.admin.index') }}" class="{{ request()->routeIs('admin.admin.*') ? 'active' : '' }}"><i class="bi bi-people"></i> Kelola Admin</a>
+    @if (auth()->user()->role === 'super_admin')
+        <a href="{{ route('admin.admin.index') }}" class="{{ request()->routeIs('admin.admin.*') ? 'active' : '' }}"><i class="bi bi-people"></i> Kelola Admin</a>
+    @endif
     <hr>
     <form method="POST" action="{{ route('admin.logout') }}">
         @csrf
@@ -87,9 +94,14 @@
             <button class="btn d-lg-none" onclick="document.getElementById('sidebar').classList.toggle('show')"><i class="bi bi-list fs-4"></i></button>
             <h5 class="mb-0" style="color: var(--dark-olive); font-weight:600;">@yield('title', 'Dashboard')</h5>
         </div>
-        <div class="d-flex align-items-center gap-2">
-            <i class="bi bi-person-circle fs-4" style="color: var(--olive);"></i>
-            <span class="fw-semibold">{{ auth()->user()->name }}</span>
+        <div class="d-flex align-items-center gap-3">
+            <a href="{{ route('home') }}" target="_blank" class="btn-outline-olive-sm text-decoration-none">
+                <i class="bi bi-box-arrow-up-right me-1"></i> Lihat Website
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-person-circle fs-4" style="color: var(--olive);"></i>
+                <span class="fw-semibold">{{ auth()->user()->name }}</span>
+            </div>
         </div>
     </div>
 

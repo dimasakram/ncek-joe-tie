@@ -15,6 +15,8 @@ class GalleryController extends Controller
             ->paginate(12)
             ->withQueryString();
 
-        return view('gallery.index', compact('galleries'));
+        $featured = Gallery::orderBy('order')->limit(4)->get();
+
+        return view('gallery.index', compact('galleries', 'featured'));
     }
 }

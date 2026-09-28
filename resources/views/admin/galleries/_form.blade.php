@@ -15,8 +15,8 @@
     <label class="form-label">Foto</label>
     <input type="file" name="image" class="form-control">
     @error('image')<div class="text-danger small">{{ $message }}</div>@enderror
-    @if (!empty($gallery) && $gallery->image)
-        <img src="{{ asset('storage/'.$gallery->image) }}" width="80" class="mt-2 rounded">
+    @if (!empty($gallery) && $gallery->image_url)
+        <img src="{{ $gallery->image_url }}" width="80" class="mt-2 rounded">
     @endif
 </div>
 <div class="mb-3">

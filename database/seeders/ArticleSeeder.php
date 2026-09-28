@@ -32,6 +32,12 @@ class ArticleSeeder extends Seeder
                 'content' => "Proses sangrai (roasting) sangat menentukan karakter rasa kopi yang dihasilkan. Di Ncek Joe Tie, kami memilih tingkat sangrai medium untuk menyeimbangkan keasaman dan kepahitan.\n\nBiji kopi disangrai dalam batch kecil agar kualitasnya tetap terjaga dan aromanya lebih maksimal saat diseduh.\n\nKami percaya, secangkir kopi yang enak dimulai dari proses yang diperhatikan dengan detail.",
                 'image' => 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80',
             ],
+            [
+                'title' => 'Rekomendasi Camilan Sore yang Wajib Dicoba',
+                'excerpt' => 'Sore-sore ngopi rasanya kurang lengkap tanpa camilan hangat di sampingnya.',
+                'content' => "Sore hari sering jadi waktu favorit untuk bersantai sambil ngopi. Di Ncek Joe Tie, ada beberapa camilan yang selalu jadi andalan pelanggan untuk menemani momen itu.\n\nMulai dari pisang nugget dengan topping cokelat dan keju, sampai french fries renyah dengan saus pilihan. Semuanya cocok dinikmati sambil ngobrol santai atau kerja ringan.\n\nCoba datang di jam 15.00-17.00, biasanya suasana lagi paling nyaman untuk bersantai.",
+                'image' => 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80',
+            ],
         ];
 
         foreach ($articles as $a) {

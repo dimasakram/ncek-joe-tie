@@ -36,8 +36,8 @@
     <div class="col-md-6 mb-3">
         <label class="form-label">Foto Menu</label>
         <input type="file" name="image" class="form-control">
-        @if (!empty($menu) && $menu->image)
-            <img src="{{ asset('storage/'.$menu->image) }}" width="60" class="mt-2 rounded">
+        @if (!empty($menu) && $menu->image_url)
+            <img src="{{ $menu->image_url }}" width="60" class="mt-2 rounded">
         @endif
     </div>
 </div>

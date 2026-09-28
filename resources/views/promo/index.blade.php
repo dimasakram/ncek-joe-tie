@@ -10,12 +10,13 @@
         <h1 class="display-4 fw-bold" style="color: var(--cream);">Promo Spesial</h1>
         <p class="fs-5" style="color: rgba(248,242,231,0.85);">Nikmati penawaran menarik dari kami</p>
     </div>
+    <div class="wave-divider"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0,40 C280,90 480,0 720,30 C960,60 1160,10 1440,50 L1440,100 L0,100 Z" fill="var(--cream)"></path></svg></div>
 </section>
 
 @if ($promos->isNotEmpty())
     @php $featured = $promos->first(); @endphp
-    <section class="py-5">
-        <div class="container">
+    <section class="py-5" style="position:relative; overflow:hidden;">
+        <div class="container" style="padding-bottom: 5rem;">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6 fade-up show">
                     <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow">
@@ -32,10 +33,11 @@
                 </div>
             </div>
         </div>
+        <div class="wave-divider"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0,40 C280,90 480,0 720,30 C960,60 1160,10 1440,50 L1440,100 L0,100 Z" fill="var(--beige)"></path></svg></div>
     </section>
 @endif
 
-<section class="py-5" style="background: var(--beige);">
+<section class="py-5" style="background: var(--beige); position:relative; overflow:hidden;">
     <div class="container py-4">
         <div class="text-center mb-5 fade-up">
             <p class="section-sub">Promo Lainnya</p>
@@ -43,7 +45,7 @@
         </div>
         <div class="row g-4">
             @forelse ($promos as $promo)
-                <div class="col-md-4 fade-up">
+                <div class="col-md-4 fade-up" style="padding-bottom: 3rem;">
                     <a href="{{ route('promo.show', $promo->slug) }}" class="text-decoration-none">
                         <div class="card border-0 shadow-sm h-100" style="border-radius:16px; overflow:hidden;">
                             @if ($promo->image_url)
@@ -72,6 +74,7 @@
         </div>
         <div class="mt-4">{{ $promos->links() }}</div>
     </div>
+    <div class="wave-divider"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0,40 C280,90 480,0 720,30 C960,60 1160,10 1440,50 L1440,100 L0,100 Z" fill="var(--dark-olive)"></path></svg></div>
 </section>
 
 @endsection

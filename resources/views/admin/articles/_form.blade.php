@@ -19,8 +19,8 @@
 <div class="mb-3">
     <label class="form-label">Gambar Sampul</label>
     <input type="file" name="image" class="form-control">
-    @if (!empty($article) && $article->image)
-        <img src="{{ asset('storage/'.$article->image) }}" width="80" class="mt-2 rounded">
+    @if (!empty($article) && $article->image_url)
+        <img src="{{ $article->image_url }}" width="80" class="mt-2 rounded">
     @endif
 </div>
 <div class="row">

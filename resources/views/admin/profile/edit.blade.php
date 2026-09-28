@@ -8,36 +8,13 @@
         <div class="mb-3">
             <label class="form-label">Nama Restoran</label>
             <input type="text" name="name" class="form-control" value="{{ old('name', $profile->name) }}" required>
+            @error('name')<div class="text-danger small">{{ $message }}</div>@enderror
         </div>
         <div class="mb-3">
-            <label class="form-label">Sejarah</label>
-            <textarea name="history" class="form-control" rows="3">{{ old('history', $profile->history) }}</textarea>
-        </div>
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <label class="form-label">Visi</label>
-                <textarea name="vision" class="form-control" rows="2">{{ old('vision', $profile->vision) }}</textarea>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label class="form-label">Misi</label>
-                <textarea name="mission" class="form-control" rows="2">{{ old('mission', $profile->mission) }}</textarea>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label class="form-label">Nilai Perusahaan</label>
-                <textarea name="core_values" class="form-control" rows="2">{{ old('core_values', $profile->core_values) }}</textarea>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Logo</label>
-                <input type="file" name="logo" class="form-control">
-                @if ($profile->logo)<img src="{{ asset('storage/'.$profile->logo) }}" width="60" class="mt-2 rounded">@endif
-            </div>
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Foto Sampul</label>
-                <input type="file" name="cover_photo" class="form-control">
-                @if ($profile->cover_photo)<img src="{{ asset('storage/'.$profile->cover_photo) }}" width="80" class="mt-2 rounded">@endif
-            </div>
+            <label class="form-label">Logo</label>
+            <input type="file" name="logo" class="form-control" accept="image/*">
+            @error('logo')<div class="text-danger small">{{ $message }}</div>@enderror
+            @if ($profile->logo)<img src="{{ asset('storage/'.$profile->logo) }}" width="60" class="mt-2 rounded">@endif
         </div>
         <div class="row">
             <div class="col-md-6 mb-3">
@@ -65,7 +42,8 @@
         </div>
         <div class="mb-3">
             <label class="form-label">URL Embed Google Maps</label>
-            <input type="text" name="maps_embed_url" class="form-control" value="{{ old('maps_embed_url', $profile->maps_embed_url) }}">
+            <textarea name="maps_embed_url" class="form-control" rows="2">{{ old('maps_embed_url', $profile->maps_embed_url) }}</textarea>
+            @error('maps_embed_url')<div class="text-danger small">{{ $message }}</div>@enderror
         </div>
         <div class="row">
             <div class="col-md-4 mb-3">

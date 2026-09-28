@@ -28,17 +28,12 @@ class RestaurantProfileController extends Controller
                 Storage::disk('public')->delete($profile->logo);
             }
             $data['logo'] = $request->file('logo')->store('profile', 'public');
-        }
-
-        if ($request->hasFile('cover_photo')) {
-            if ($profile->cover_photo) {
-                Storage::disk('public')->delete($profile->cover_photo);
-            }
-            $data['cover_photo'] = $request->file('cover_photo')->store('profile', 'public');
+        } else {
+            unset($data['logo']);
         }
 
         $profile->update($data);
 
         return redirect()->route('admin.profil.edit')->with('success', 'Profil restoran berhasil diperbarui.');
     }
-}
+}   

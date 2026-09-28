@@ -13,10 +13,6 @@ class RestaurantProfileSeeder extends Seeder
             ['id' => 1],
             [
                 'name' => 'Ncek Joe Tie',
-                'history' => 'Ncek Joe Tie berawal dari kedai kecil yang menyajikan kopi dan hidangan hangat dengan resep turun-temurun.',
-                'vision' => 'Menjadi cafe resto pilihan keluarga yang menghadirkan kehangatan di setiap kunjungan.',
-                'mission' => 'Menyajikan menu berkualitas dengan pelayanan ramah dan suasana yang nyaman.',
-                'core_values' => 'Kualitas, Kehangatan, Konsistensi, dan Kepuasan Pelanggan.',
                 'address' => 'Jl. Raya Contoh No. 123, Sukabumi, Jawa Barat',
                 'phone' => '0266-123456',
                 'whatsapp' => '628123456789',

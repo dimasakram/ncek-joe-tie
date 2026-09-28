@@ -17,8 +17,8 @@
 <div class="mb-3">
     <label class="form-label">Foto (opsional)</label>
     <input type="file" name="photo" class="form-control">
-    @if (!empty($testimonial) && $testimonial->photo)
-        <img src="{{ asset('storage/'.$testimonial->photo) }}" width="60" class="mt-2 rounded-circle">
+    @if (!empty($testimonial) && $testimonial->photo_url)
+        <img src="{{ $testimonial->photo_url }}" width="60" class="mt-2 rounded-circle">
     @endif
 </div>
 <div class="form-check mb-3">

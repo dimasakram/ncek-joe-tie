@@ -10,7 +10,7 @@
         @forelse ($galleries as $gallery)
             <div class="col-md-3 col-6">
                 <div class="card h-100">
-                    <img src="{{ asset('storage/'.$gallery->image) }}" class="card-img-top" style="height:150px;object-fit:cover;">
+                    <img src="{{ $gallery->image_url }}" class="card-img-top" style="height:150px;object-fit:cover;">
                     <div class="card-body p-2">
                         <div class="small fw-semibold">{{ $gallery->title }}</div>
                         <span class="badge bg-secondary text-capitalize">{{ $gallery->category }}</span>

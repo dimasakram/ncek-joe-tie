@@ -37,8 +37,8 @@
 <div class="mb-3">
     <label class="form-label">Gambar Promo</label>
     <input type="file" name="image" class="form-control">
-    @if (!empty($promo) && $promo->image)
-        <img src="{{ asset('storage/'.$promo->image) }}" width="60" class="mt-2 rounded">
+    @if (!empty($promo) && $promo->image_url)
+        <img src="{{ $promo->image_url }}" width="60" class="mt-2 rounded">
     @endif
 </div>
 <div class="form-check mb-3">

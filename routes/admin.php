@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutPageController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\ArticleController as AdminArticleController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
@@ -27,7 +28,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         ->middleware('auth')
         ->name('logout');
 
-    // Dashboard & CRUD lengkap (tahap Dashboard Admin)
+    // Dashboard & CRUD lengkap
     Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -40,12 +41,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('testimoni', AdminTestimonialController::class)->except(['show']);
         Route::resource('faq', AdminFaqController::class)->except(['show']);
         Route::resource('kontak', AdminContactController::class)->only(['index', 'show', 'destroy']);
-        Route::resource('admin', AdminUserController::class)->except(['show']);
 
         Route::get('profil', [RestaurantProfileController::class, 'edit'])->name('profil.edit');
         Route::put('profil', [RestaurantProfileController::class, 'update'])->name('profil.update');
 
+        Route::get('tentang', [AboutPageController::class, 'edit'])->name('tentang.edit');
+        Route::put('tentang', [AboutPageController::class, 'update'])->name('tentang.update');
+
         Route::get('settings', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
+
+        // Kelola Admin: hanya untuk Super Admin
+        Route::middleware('super_admin')->group(function () {
+            Route::resource('admin', AdminUserController::class)->except(['show']);
+        });
     });
 });

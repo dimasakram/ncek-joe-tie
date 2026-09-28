@@ -18,6 +18,8 @@ class GallerySeeder extends Seeder
             ['title' => 'Momen Berkumpul', 'category' => 'event', 'url' => 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80'],
             ['title' => 'Kursi Outdoor', 'category' => 'interior', 'url' => 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80'],
             ['title' => 'Hidangan Spesial', 'category' => 'makanan', 'url' => 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80'],
+            ['title' => 'Racikan Manual Brew', 'category' => 'makanan', 'url' => 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80'],
+            ['title' => 'Sarapan Hangat', 'category' => 'makanan', 'url' => 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=800&q=80'],
         ];
 
         foreach ($photos as $i => $p) {

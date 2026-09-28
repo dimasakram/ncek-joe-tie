@@ -11,15 +11,17 @@
         <h1 class="display-4 fw-bold" style="color: var(--cream);">Tentang Kami</h1>
         <p class="fs-5" style="color: rgba(248,242,231,0.85);">Mengenal lebih dekat {{ $profile->name ?? 'Ncek Joe Tie' }}</p>
     </div>
+    <div class="wave-divider"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0,40 C280,90 480,0 720,30 C960,60 1160,10 1440,50 L1440,100 L0,100 Z" fill="var(--cream)"></path></svg></div>
 </section>
 
-<section class="py-5">
+{{-- SEJARAH --}}
+<section class="py-5" style="position:relative; overflow:hidden; padding-top:6rem !important; padding-bottom:6rem !important;">
     <div class="container">
-        <div class="row align-items-center g-5 mb-5">
+        <div class="row align-items-center g-5">
             <div class="col-lg-6 fade-up">
                 <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow">
-                    @if (!empty($profile->cover_photo))
-                        <img src="{{ asset('storage/'.$profile->cover_photo) }}" class="w-100 h-100" style="object-fit:cover;">
+                    @if (!empty($about->cover_photo_url))
+                        <img src="{{ $about->cover_photo_url }}" class="w-100 h-100" style="object-fit:cover;">
                     @else
                         <img src="https://images.unsplash.com/photo-1481833761820-0509d3217039?auto=format&fit=crop&w=900&q=80" class="w-100 h-100" style="object-fit:cover;">
                     @endif
@@ -28,54 +30,69 @@
             <div class="col-lg-6 fade-up">
                 <p class="section-sub">Sejarah Kami</p>
                 <h2 class="section-title mb-3">Perjalanan {{ $profile->name ?? 'Ncek Joe Tie' }}</h2>
-                <p class="text-muted mb-3" style="line-height:1.9;">{{ $profile->history ?? 'Sejarah restoran belum tersedia.' }}</p>
+                <p class="text-muted mb-3" style="line-height:1.9;">{{ $about->history ?? 'Sejarah restoran belum tersedia.' }}</p>
                 <p class="text-muted" style="line-height:1.9;">Dari sebuah kedai kecil yang menyajikan kopi seduhan sederhana, kami tumbuh berkat kepercayaan pelanggan yang datang kembali bukan hanya karena rasa, tapi juga karena suasana yang terasa seperti rumah kedua. Setiap resep yang kami sajikan hari ini masih membawa jejak resep pertama yang diracik penuh cinta bertahun-tahun lalu — dijaga konsistensinya, namun terus disempurnakan mengikuti selera generasi baru.</p>
             </div>
         </div>
+    </div>
+    <div class="wave-divider"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0,40 C280,90 480,0 720,30 C960,60 1160,10 1440,50 L1440,100 L0,100 Z" fill="var(--beige)"></path></svg></div>
+</section>
 
-        <div class="row g-4 mb-5">
+{{-- COFFEE SOURCING --}}
+<section class="py-5" style="background: var(--beige); position:relative; overflow:hidden; padding-top:6rem !important; padding-bottom:6rem !important;">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 order-lg-1 fade-up">
+                <p class="section-sub">Dari Kebun ke Cangkir</p>
+                <h2 class="section-title mb-3">{{ $about->coffee_sourcing_title ?? 'Coffee Sourcing' }}</h2>
+                <p class="text-muted" style="line-height:1.9; white-space: pre-line;">{{ $about->coffee_sourcing_description ?? 'Kami percaya secangkir kopi yang enak dimulai jauh sebelum proses seduh. Biji kopi yang kami gunakan dipilih langsung dari petani lokal di dataran tinggi, dipanen pada waktu yang tepat untuk menjaga karakter rasa terbaiknya.' }}</p>
+            </div>
+            <div class="col-lg-6 order-lg-2 fade-up">
+                <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow">
+                    @if (!empty($about->coffee_sourcing_image_url))
+                        <img src="{{ $about->coffee_sourcing_image_url }}" class="w-100 h-100" style="object-fit:cover;">
+                    @else
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80" class="w-100 h-100" style="object-fit:cover;">
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wave-divider"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0,40 C280,90 480,0 720,30 C960,60 1160,10 1440,50 L1440,100 L0,100 Z" fill="var(--cream)"></path></svg></div>
+</section>
+
+{{-- VISI MISI NILAI --}}
+<section class="py-5" style="position:relative; overflow:hidden; padding-top:6rem !important; padding-bottom:6rem !important;">
+    <div class="container">
+        <div class="text-center mb-5 fade-up">
+            <p class="section-sub">Prinsip Kami</p>
+            <h2 class="section-title">Visi, Misi & Nilai Perusahaan</h2>
+        </div>
+        <div class="row g-4">
             <div class="col-md-4 fade-up">
                 <div class="card h-100 border-0 shadow-sm p-4 text-center">
                     <i class="bi bi-eye fs-1 mb-3" style="color: var(--coral);"></i>
                     <h5 class="fw-semibold" style="color: var(--dark-olive);">Visi</h5>
-                    <p class="text-muted small mb-0">{{ $profile->vision ?? '-' }}</p>
+                    <p class="text-muted small mb-0">{{ $about->vision ?? '-' }}</p>
                 </div>
             </div>
             <div class="col-md-4 fade-up">
                 <div class="card h-100 border-0 shadow-sm p-4 text-center">
                     <i class="bi bi-bullseye fs-1 mb-3" style="color: var(--coral);"></i>
                     <h5 class="fw-semibold" style="color: var(--dark-olive);">Misi</h5>
-                    <p class="text-muted small mb-0">{{ $profile->mission ?? '-' }}</p>
+                    <p class="text-muted small mb-0">{{ $about->mission ?? '-' }}</p>
                 </div>
             </div>
             <div class="col-md-4 fade-up">
                 <div class="card h-100 border-0 shadow-sm p-4 text-center">
                     <i class="bi bi-heart fs-1 mb-3" style="color: var(--coral);"></i>
                     <h5 class="fw-semibold" style="color: var(--dark-olive);">Nilai Perusahaan</h5>
-                    <p class="text-muted small mb-0">{{ $profile->core_values ?? '-' }}</p>
+                    <p class="text-muted small mb-0">{{ $about->core_values ?? '-' }}</p>
                 </div>
             </div>
         </div>
     </div>
-</section>
-
-{{-- COFFEE SOURCING --}}
-<section class="py-5" style="background: var(--beige);">
-    <div class="container py-4">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6 order-lg-1 fade-up">
-                <p class="section-sub">Dari Kebun ke Cangkir</p>
-                <h2 class="section-title mb-3">Coffee Sourcing</h2>
-                <p class="text-muted mb-3" style="line-height:1.9;">Kami percaya secangkir kopi yang enak dimulai jauh sebelum proses seduh. Biji kopi yang kami gunakan dipilih langsung dari petani lokal di dataran tinggi, dipanen pada waktu yang tepat untuk menjaga karakter rasa terbaiknya.</p>
-                <p class="text-muted" style="line-height:1.9;">Setiap batch disangrai dalam jumlah kecil agar kualitas tetap terjaga, lalu diuji rasanya sebelum sampai ke cangkirmu. Dengan begitu, kami tidak hanya menyajikan kopi — kami menyajikan hasil kerja keras banyak tangan dari kebun hingga meja kamu.</p>
-            </div>
-            <div class="col-lg-6 order-lg-2 fade-up">
-                <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow">
-                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80" class="w-100 h-100" style="object-fit:cover;">
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="wave-divider"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0,40 C280,90 480,0 720,30 C960,60 1160,10 1440,50 L1440,100 L0,100 Z" fill="var(--dark-olive)"></path></svg></div>
 </section>
 
 @endsection

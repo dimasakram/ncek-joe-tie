@@ -31,8 +31,8 @@
                 @forelse ($menus as $menu)
                     <tr>
                         <td>
-                            @if ($menu->image)
-                                <img src="{{ asset('storage/'.$menu->image) }}" width="50" height="50" style="object-fit:cover;border-radius:8px;">
+                            @if ($menu->image_url)
+                                <img src="{{ $menu->image_url }}" width="50" height="50" style="object-fit:cover;border-radius:8px;">
                             @else
                                 <div class="bg-light rounded" style="width:50px;height:50px;"></div>
                             @endif

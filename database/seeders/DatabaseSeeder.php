@@ -13,10 +13,13 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             MenuSeeder::class,
             RestaurantProfileSeeder::class,
+            AboutPageSeeder::class,
             SettingSeeder::class,
             PromoSeeder::class,
             GallerySeeder::class,
             ArticleSeeder::class,
+            TestimonialSeeder::class,
+            FaqSeeder::class,
         ]);
     }
 }

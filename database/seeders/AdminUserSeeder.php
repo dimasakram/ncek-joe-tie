@@ -19,5 +19,15 @@ class AdminUserSeeder extends Seeder
                 'email_verified_at' => now(),
             ]
         );
+
+        User::updateOrCreate(
+            ['email' => 'staff@ncekjoetie.com'],
+            [
+                'name' => 'Staff Ncek Joe Tie',
+                'password' => Hash::make('87654321'),
+                'role' => 'admin',
+                'email_verified_at' => now(),
+            ]
+        );
     }
 }

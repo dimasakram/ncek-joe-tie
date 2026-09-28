@@ -30,12 +30,11 @@
 
 <div class="row g-3">
     <div class="col-lg-7">
-        <div class="card p-3">
+        <div class="card p-3 mb-3">
             <h6 class="fw-semibold mb-3" style="color: var(--dark-olive);">Grafik Reservasi Tahun Ini</h6>
             <canvas id="reservationChart" height="120"></canvas>
         </div>
-    </div>
-    <div class="col-lg-5">
+
         <div class="card p-3">
             <h6 class="fw-semibold mb-3" style="color: var(--dark-olive);">Reservasi Terbaru</h6>
             @forelse ($latestReservations as $r)
@@ -48,6 +47,25 @@
                 </div>
             @empty
                 <p class="text-muted mb-0">Belum ada reservasi.</p>
+            @endforelse
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="card p-3">
+            <h6 class="fw-semibold mb-3" style="color: var(--dark-olive);">Aktivitas Terbaru</h6>
+            @forelse ($activities as $activity)
+                <div class="d-flex align-items-start gap-3 border-bottom py-2">
+                    <div class="d-flex align-items-center justify-content-center flex-shrink-0" style="width:38px; height:38px; border-radius:50%; background: {{ $activity['color'] }}20;">
+                        <i class="bi {{ $activity['icon'] }}" style="color: {{ $activity['color'] }};"></i>
+                    </div>
+                    <div>
+                        <div class="small">{!! $activity['text'] !!}</div>
+                        <div class="text-muted" style="font-size:.75rem;">{{ $activity['time']->diffForHumans() }}</div>
+                    </div>
+                </div>
+            @empty
+                <p class="text-muted mb-0">Belum ada aktivitas.</p>
             @endforelse
         </div>
     </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', $settings['meta_title'] ?? 'Ncek Joe Tie') - Cafe & Resto</title>
+    <title>@yield('title', $settings['meta_title'] ?? 'Ncek Joe Tie') - Ncek Joe Tie </title>
     <meta name="description" content="@yield('meta_description', $settings['meta_description'] ?? 'Ncek Joe Tie menghadirkan kopi dan hidangan hangat dengan suasana cafe yang elegan dan nyaman.')">
     <meta property="og:title" content="@yield('title', $settings['meta_title'] ?? 'Ncek Joe Tie')">
     <meta property="og:description" content="@yield('meta_description', $settings['meta_description'] ?? '')">
@@ -14,7 +14,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
     {{-- Schema.org Restaurant --}}
@@ -41,6 +41,53 @@
         body { font-family: 'Manrope', sans-serif; background: var(--cream); color: #4a453f; letter-spacing: .1px; }
         h1, h2, h3, h4, .font-display { font-family: 'Fraunces', serif; letter-spacing: -.5px; }
         .italic-accent { font-family: 'Fraunces', serif; font-style: italic; font-weight: 500; }
+
+        .handwritten { font-family: 'Caveat', cursive; font-weight: 600; }
+
+        .rustic-texture { position: relative; }
+        .rustic-texture::before {
+            content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+
+        .btn-outline-olive { border: 1.5px solid var(--olive); color: var(--olive); border-radius: 30px; padding: .55rem 1.6rem; font-weight: 600; background: transparent; transition: .3s; }
+        .btn-outline-olive:hover { background: var(--olive); color: #fff; }
+
+        .wave-divider { position: absolute; bottom: -1px; left: 0; width: 100%; line-height: 0; z-index: 1; }
+        .wave-divider svg { width: 100%; height: 70px; display: block; }
+
+        .polaroid-stack { position: relative; height: 420px; }
+        .polaroid { background: #fff; padding: 14px 14px 18px; box-shadow: 0 12px 30px rgba(46,71,32,0.2); border-radius: 4px; }
+        .polaroid img { width: 100%; height: 260px; object-fit: cover; display: block; }
+        .polaroid-back { position: absolute; top: 30px; right: 0; width: 62%; transform: rotate(6deg); opacity: .85; }
+        .polaroid-back img { height: 220px; }
+        .polaroid-front { position: absolute; bottom: 10px; left: 0; width: 62%; transform: rotate(-4deg); }
+        .polaroid-solo { display: inline-block; transform: rotate(-2deg); max-width: 100%; }
+        .polaroid-solo img { width: 100%; height: 340px; object-fit: cover; }
+
+        .card-rustic { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 24px rgba(46,71,32,0.08); border: 1px solid rgba(62,95,43,0.08); transition: .3s; }
+        .card-rustic:hover { transform: translateY(-5px); box-shadow: 0 16px 32px rgba(46,71,32,0.14); }
+        .card-rustic-img { position: relative; height: 190px; }
+        .card-rustic-img img { width: 100%; height: 100%; object-fit: cover; }
+        .price-tag { position: absolute; bottom: 10px; right: 10px; background: var(--olive); color: #fff; padding: .3rem .8rem; border-radius: 20px; font-size: .8rem; font-weight: 700; box-shadow: 0 3px 8px rgba(0,0,0,0.2); }
+
+        .sketch-badge { width: 76px; height: 76px; border-radius: 50%; border: 2px dashed rgba(224,106,75,0.6); display:flex; align-items:center; justify-content:center; color: var(--coral); position: relative; }
+        .sketch-badge::after { content:""; position:absolute; inset:8px; border-radius:50%; background: rgba(224,106,75,0.12); }
+        .sketch-badge i { position: relative; z-index: 2; }
+
+        .note-card { background: #fffdf8; border: 1px solid rgba(62,95,43,0.1); border-radius: 4px; padding: 1.3rem; height: 100%; box-shadow: 0 8px 20px rgba(46,71,32,0.1); }
+
+        .testi-dots { position: static; margin: 1.5rem 0 0; }
+        .testi-dots [data-bs-target] {
+            width: 9px; height: 9px; border-radius: 50%; border: none;
+            background: var(--beige); opacity: 1; margin: 0 4px;
+            text-indent: -9999px; transition: background .25s, transform .25s;
+        }
+        .testi-dots [data-bs-target].active { background: var(--coral); transform: scale(1.15); }
+
+        .testi-card { background: #fff; border-radius: 20px; padding: 2.5rem 2rem; box-shadow: 0 10px 30px rgba(46,71,32,0.1); }
+
+        @keyframes bounceDown { 0%,100% { transform: translateY(0); opacity:.7; } 50% { transform: translateY(8px); opacity:1; } }
 
         /* Navbar */
         .navbar-custom {
@@ -114,7 +161,7 @@
 
 @yield('content')
 
-<footer class="pt-5 pb-4 mt-5">
+<footer class="pt-5 pb-4">
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-5">

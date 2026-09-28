@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\AboutPage;
 use App\Models\RestaurantProfile;
 use App\Models\Setting;
 use Illuminate\Pagination\Paginator;
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'profile' => RestaurantProfile::first(),
                 'settings' => Setting::pluck('value', 'key'),
+                'about' => AboutPage::first(),
             ]);
         });
     }

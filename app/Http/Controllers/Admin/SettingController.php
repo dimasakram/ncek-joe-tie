@@ -23,11 +23,24 @@ class SettingController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('favicon')) {
+            $oldFavicon = Setting::get('favicon');
+            if ($oldFavicon) {
+                Storage::disk('public')->delete($oldFavicon);
+            }
             $data['favicon'] = $request->file('favicon')->store('settings', 'public');
+        } else {
+            // Tidak ada file baru diupload: jangan timpa favicon yang sudah ada dengan kosong.
+            unset($data['favicon']);
         }
 
         if ($request->hasFile('og_image')) {
+            $oldOgImage = Setting::get('og_image');
+            if ($oldOgImage) {
+                Storage::disk('public')->delete($oldOgImage);
+            }
             $data['og_image'] = $request->file('og_image')->store('settings', 'public');
+        } else {
+            unset($data['og_image']);
         }
 
         foreach ($data as $key => $value) {

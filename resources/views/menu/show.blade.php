@@ -3,19 +3,25 @@
 @section('meta_description', Str::limit($menu->description, 150))
 @section('content')
 
-<section style="padding-top:120px;">
-    <div class="container py-4">
-        <nav class="mb-4 small">
-            <a href="{{ route('home') }}" class="text-decoration-none text-muted">Home</a> /
-            <a href="{{ route('menu.index') }}" class="text-decoration-none text-muted">Menu</a> /
-            <span style="color: var(--dark-olive);">{{ $menu->name }}</span>
+<section style="background: var(--dark-olive); position:relative; overflow:hidden; padding-top: 100px; padding-bottom: 4rem;">
+    <div class="container">
+        <nav class="small">
+            <a href="{{ route('home') }}" class="text-decoration-none" style="color: rgba(248,242,231,0.7);">Home</a> /
+            <a href="{{ route('menu.index') }}" class="text-decoration-none" style="color: rgba(248,242,231,0.7);">Menu</a> /
+            <span style="color: var(--coral);">{{ $menu->name }}</span>
         </nav>
+    </div>
+    <div class="wave-divider"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0,40 C280,90 480,0 720,30 C960,60 1160,10 1440,50 L1440,100 L0,100 Z" fill="var(--cream)"></path></svg></div>
+</section>
+
+<section class="py-4" style="position:relative; overflow:hidden; padding-bottom: 6rem;">
+    <div class="container py-4">
 
         <div class="row g-5">
             <div class="col-lg-6 fade-up show">
                 <div class="ratio ratio-1x1 rounded-4 overflow-hidden shadow-sm">
                     @if ($menu->image)
-                        <img src="{{ asset('storage/'.$menu->image) }}" class="w-100 h-100" style="object-fit:cover;">
+                        <img src="{{ $menu->image_url }}" class="w-100 h-100" style="object-fit:cover;">
                     @else
                         <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="background: var(--beige);"><i class="bi bi-cup-hot display-1" style="color: var(--olive);"></i></div>
                     @endif
@@ -42,14 +48,14 @@
         </div>
 
         @if ($relatedMenus->isNotEmpty())
-            <div class="mt-5 pt-4">
+            <div class="mt-5 pt-4" style="padding-bottom: 3rem;">
                 <h4 class="section-title mb-4">Menu Terkait</h4>
                 <div class="row g-4">
                     @foreach ($relatedMenus as $related)
                         <div class="col-md-3 col-6 fade-up">
                             <div class="card card-menu h-100">
                                 @if ($related->image)
-                                    <img src="{{ asset('storage/'.$related->image) }}" class="card-img-top" style="height:140px;">
+                                    <img src="{{ $related->image_url }}" class="card-img-top" style="height:140px;">
                                 @endif
                                 <div class="card-body p-2">
                                     <div class="small fw-semibold">{{ $related->name }}</div>
@@ -63,6 +69,7 @@
             </div>
         @endif
     </div>
+    <div class="wave-divider"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0,40 C280,90 480,0 720,30 C960,60 1160,10 1440,50 L1440,100 L0,100 Z" fill="var(--dark-olive)"></path></svg></div>
 </section>
 
 @endsection

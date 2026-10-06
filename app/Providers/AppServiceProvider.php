@@ -17,15 +17,19 @@ class AppServiceProvider extends ServiceProvider
     }
 
     public function boot(): void
-    {
-        Paginator::useBootstrapFive();
-
-        View::composer('*', function ($view) {
-            $view->with([
-                'profile' => RestaurantProfile::first(),
-                'settings' => Setting::pluck('value', 'key'),
-                'about' => AboutPage::first(),
-            ]);
-        });
+{
+    if (config('app.env') === 'production') {
+        URL::forceScheme('https');
     }
+
+    Paginator::useBootstrapFive();
+
+    View::composer('*', function ($view) {
+        $view->with([
+            'profile' => RestaurantProfile::first(),
+            'settings' => Setting::pluck('value', 'key'),
+            'about' => AboutPage::first(),
+        ]);
+    });
+}
 }
